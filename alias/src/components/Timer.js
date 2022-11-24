@@ -1,19 +1,18 @@
 import React, { useRef, useState, useEffect, useContext } from 'react'
-import { EndTimeContext, StartedContext } from '../context';
+import { Context } from '../context';
 
-function Timer() {
+function Timer(props) {
 
-    const { setStarted } = useContext(StartedContext)
+    let {end_time} = props
 
-    let end_time = null
+    const { setEndedRound } = useContext(Context)
 
     const [timer, setTimer] = useState("00");
 
     const Ref = useRef(null);
 
+
     const getTimeRemaining = () => {
-        const row = localStorage.getItem('end_time')
-        end_time = JSON.parse(row)
         const total = end_time - Date.parse(new Date());
         const seconds = Math.floor(total / 1000);
         return {
@@ -22,6 +21,7 @@ function Timer() {
     }
 
     const startTimer = () => {
+        console.log("in timer",end_time)
         let { total, seconds }
             = getTimeRemaining();
         if (total >= 0) {
@@ -29,12 +29,10 @@ function Timer() {
                 + (seconds > 9 ? seconds : '0' + seconds)
             )
         } else {
-            localStorage.setItem('started', JSON.stringify(false))
-            setStarted(false)
+            setEndedRound(true)
+            clearInterval(Ref.current);
         }
     }
-
-
     const clearTimer = () => {
         setTimer("30");
         if (Ref.current) clearInterval(Ref.current);
@@ -43,14 +41,9 @@ function Timer() {
         }, 1000)
         Ref.current = id;
     }
-
-    const getDeadTime = () => {
-        let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + 10);
-        return deadline;
-    }
+  
     useEffect(() => {
-        clearTimer(getDeadTime());
+        clearTimer();
     }, []);
 
     return (
