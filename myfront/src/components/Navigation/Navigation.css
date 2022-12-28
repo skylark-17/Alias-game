@@ -1,0 +1,26 @@
+.navigation_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: SkyBlue;
+    border: solid 2px #573b8a;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.navigation_button {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+
+    border-radius: 20px;
+    background-color: #573b8a;
+}
+
+.login_register_text{
+    color: white;
+}
