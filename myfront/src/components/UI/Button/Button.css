@@ -2,19 +2,21 @@ button{
 	height: 40px;
     width: 50%;
 	margin: 10px auto;
-	justify-content: center;
-	display: block;
-	color: #fff;
+	color: white;
 	background: #573b8a;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	outline: none;
-	border: none;
 	border-radius: 5px;
-	transition: .2s ease-in;
 	cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: #573b8a;
+    border: solid 1px #2c1d45;
+    box-shadow: 1px 3px 10px #150e21;
 }
 
 button:hover{

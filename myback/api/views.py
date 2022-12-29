@@ -12,22 +12,6 @@ from django.contrib.auth.models import User
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
-
-
-class NicknameList(APIView):
-    # permission_classes = [IsAuthenticated]
-    def get(self, request):
-        topics = Nickname.objects.all()
-        serializer = NicknameSerializer(topics, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = NicknameSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors)
-
 class WishList(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
@@ -43,19 +27,15 @@ class WishList(APIView):
         return Response(serializer.errors)
 
 
-class NicknameListAll(generics.ListAPIView):
-    # permission_classes = [IsAuthenticated]
-    serializer_class = NicknameSerializer
-    queryset = Nickname.objects.all()
-
-class NicknameCreate(generics.CreateAPIView):
+class CreateWish(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = NicknameSerializer
-
-class NicknameDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = NicknameSerializer
-    queryset = Nickname.objects.all()
+    def post(self, request):
+        wish = Wish.objects.create(
+            title=request.data.get("title"),
+            text=request.data.get("text"),
+            nickname=request.data.get("nickname"),
+        )
+        return Response(status=HTTP_200_OK)
 
 
 class WishListAll(generics.ListAPIView):
@@ -75,7 +55,6 @@ class WishDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class CreateUser(APIView):
     def post(self, request):
-        print(User.objects.filter(username=request.data.get("username")).count())
         if User.objects.filter(username=request.data.get("username")).count():
             return Response(status=HTTP_403_FORBIDDEN)
 
@@ -90,3 +69,18 @@ class CreateUser(APIView):
             "access": str(access),
             "refresh": str(refresh)
             }, status=HTTP_200_OK)
+
+
+class GetWishesByUser(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        nickname = request.data
+        return JsonResponse(list(Wish.objects.filter(nickname=nickname).values()), safe=False)
+
+class DeleteWish(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        id = request.data
+        Wish.objects.filter(id=id).delete()
+        return Response(status=HTTP_200_OK)
+

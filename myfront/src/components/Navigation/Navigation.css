@@ -7,6 +7,7 @@
     border: solid 2px #573b8a;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    box-shadow: 1px 3px 10px #150e21;
 }
 
 .navigation_button {
@@ -19,6 +20,8 @@
 
     border-radius: 20px;
     background-color: #573b8a;
+    border: solid 1px #2c1d45;
+    box-shadow: 1px 3px 10px #150e21;
 }
 
 .login_register_text{

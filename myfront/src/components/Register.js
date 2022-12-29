@@ -41,6 +41,7 @@ function Register() {
     return (
         <div className="main">
             <form className='form_wrapper' onSubmit={submitChackin}>
+                <p className='form_title'>Зарегистрироваться</p>
                 <div>
                     <p className='form_label'>Логин</p>
                     <input 

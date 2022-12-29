@@ -1,20 +1,18 @@
 import { useState, useEffect, useContext } from 'react'
 import AuthContext from '../context/AuthContext'
-import { GetNicknames } from '../services/BackApi'
-
-
-let all_words = ["Игра", "Шляпа", "Кровать", "Калькулятор", "Процессор", "Телебашня", "Дрон", "Пододеяльник", "Чемпион", "Гейзер", "Кондиционер", "Либерал",
-    "Магистратура", "Омоним", "Самостоятельность", "Стража", "Подвох", "Халтура", "Кульминация", "Абориген", "Юнга", "Админ", "Краситель", "Молодость", "Палуба", "Ранчо",
-    "Громила", "Бергамот", "Дерматолог", "Самообразование", "Клиника", "Благотворительность", "Оскорбление", "Филолог", "Мемуары", "Астрология", "Штаб", "Капиталист",
-    "Инструкция", "Резистор", "Металлолом", "Памятник", "Дворецкий", "Репетиция", "Резонанс", "Эфир", "Налогоплательщик", "Потребность", "Терминология", "Тюфяк",
-    "Капустница", "Паникёр", "Руины", "Профессионал", "Умник", "Ботаника", "Мегафон", "Эпатаж", "Юморист", "Безысходность", "Анестезия", "Иерархия", "Монарх"]
+import { createWish, GetNicknames } from '../services/BackApi'
 
 function Home() {
     const {authTokens} = useContext(AuthContext)
+    const token = authTokens?.access
+    const data={
+        title:"kek",
+        text:"lol",
+        nickname:"Skylark"
+    }
     return (
         <div>
-            {/* <button onClick={GetNicknames(authTokens)}>get nicknames</button> */}
-            <button onClick={GetNicknames}>123213</button>
+            <button onClick={()=>createWish({token, data})}>123213</button>
             123
         </div>
     )

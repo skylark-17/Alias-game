@@ -10,6 +10,7 @@ function LoginPage() {
     const {loginUser} = useContext(AuthContext)
     return(
         <div className='main'>
+            <p className='form_title'>Войти</p>
             <form className='form_wrapper' onSubmit={loginUser}>
                 <div>
                     <p className='form_label'>Логин</p>
