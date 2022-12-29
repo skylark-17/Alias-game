@@ -4,8 +4,6 @@ import Navigation from '../Navigation/Navigation';
 import NotFound from '../NotFound';
 import { AuthProvider } from '../../context/AuthContext';
 import {all_pages} from '../Navigation/Navigation'
-import Home from '../Home';
-
 
 function App() {
   return (

@@ -42,6 +42,7 @@ function Register() {
         <div className="main">
             <form className='form_wrapper' onSubmit={submitChackin}>
                 <p className='form_title'>Зарегистрироваться</p>
+
                 <div>
                     <p className='form_label'>Логин</p>
                     <input 
@@ -55,6 +56,7 @@ function Register() {
 
                 <div>
                     <p className='form_label'>Электронная почта</p>
+
                     <input 
                         type="email"
                         id="email"
@@ -66,6 +68,7 @@ function Register() {
 
                 <div>
                     <p className='form_label'>Пароль</p>
+
                     <input 
                         type="password"
                         id="password"
@@ -78,6 +81,7 @@ function Register() {
 
                 <div>
                     <p className='form_label'>Повторите пароль</p>
+
                     <input
                         type="password"
                         id="password2"
@@ -86,10 +90,12 @@ function Register() {
                         onChange={changeInputRegister} 
                         className='input'></input>
                 </div>
+
                 <Button title ={'Зарегистрироваться'} func = {() => 1} />
             </form>
             <div>
                 <label className='form_label'>Уже зарегистрированы?</label>
+                
                 <Button title={'Войти'} func = {() => {window.location.href='/login';}}></Button>
             </div>
         </div>   

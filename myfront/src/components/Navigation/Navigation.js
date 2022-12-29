@@ -1,5 +1,5 @@
 import './Navigation.css'
-import Home from '../Home';
+import Home from '../Home/Home';
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register';
 import Profile from '../Profile/Profile';
@@ -22,9 +22,10 @@ function Navigation() {
     return (
         <nav className='navigation_wrapper'>
             {all_pages.map(elem => 
-            (username == null && elem.title == 'Мои желания') ? null :
-            (username == null && elem.title == 'Добавить желание') ? null :
-            (elem.title == 'Вход' || elem.title == 'Регистрация') ? null :
+            (username == null && elem.title === 'Мои желания') ? null :
+            (username == null && elem.title === 'Добавить желание') ? null :
+            (username == null && elem.title === 'На главную') ? null :
+            (elem.title === 'Вход' || elem.title === 'Регистрация') ? null :
             <a className='navigation_button' key={elem.id} href={elem.href}>{elem.title}</a>
             )}
             {

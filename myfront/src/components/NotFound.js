@@ -1,5 +1,3 @@
-// import NotFoundImage from '../images/404.png';
-
 function NotFound() {
     return (
         <div>

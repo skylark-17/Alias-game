@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 import { createWish } from '../services/BackApi';
-
 import './LoginPage/LoginPage.css'
 import Button from './UI/Button/Button';
 
@@ -26,7 +25,7 @@ function AddWish() {
         })
     }
 
-    const submitChackin = event => {
+    const submitChackin = () => {
         const token = authTokens?.access
         data.nickname = username
         createWish({token, data})
@@ -39,6 +38,7 @@ function AddWish() {
             <form className='form_wrapper' onSubmit={submitChackin}>
                 <div>
                     <p className='form_label'>Название</p>
+
                     <input 
                         type="title"
                         id="title"
@@ -50,6 +50,7 @@ function AddWish() {
 
                 <div>
                     <p className='form_label'>Описание</p>
+
                     <textarea 
                         type="text"
                         id="text"
@@ -58,6 +59,7 @@ function AddWish() {
                         onChange={changeInputWish}
                         className='input'></textarea>
                 </div>
+                
                 <Button title ={'Добавить'} func = {() => 1} />
             </form>
         </div>   
