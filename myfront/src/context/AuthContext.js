@@ -43,7 +43,7 @@ export const AuthProvider = ({children}) => {
     const signupUser = async (e) => {
         e.preventDefault()
 
-        let res = await fetch(baseUrl + 'api/auth_api/signup',{
+        let res = await fetch(baseUrl + 'auth_api/signup',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -77,7 +77,7 @@ export const AuthProvider = ({children}) => {
     let updateToken = async ()=> {
         let refresh = authTokens?.refresh
 
-        let res = await fetch(baseUrl + 'api/auth_api/refresh',{
+        let res = await fetch(baseUrl + 'auth_api/refresh',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
